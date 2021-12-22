@@ -40,21 +40,5 @@ def create_app(test_config=None):
     app.add_url_rule('/', endpoint='index') # Send requests with '/' to feed (routes to index)
     return app
 
-
-
-
-    # USER: First name, last name, email, username, password
-    # LIFT: weight, date, RPE, lift type, username
-
-    """
-        Use functions for r=GET or POST to interface with sql database. 
-        Implement page from form app to upload a lift
-        Implement page to show 
-        Figure out how to inteface with html and how flask works lol
-    """
-    
-
-
-
-
-app = create_app()
+if __name__=="main":
+    app = create_app()
