@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1>{% block title %}New Workout{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post"> <br>
+    <label for="Lift">Lift</label> 
+    <select name="Lift" id="Lift" required>
+        <option value="None" selected >Select an Option</option>
+        <option value="Bench">Bench</option>
+        <option value="Squat">Squat</option>
+        <option value="Deadlift">Deadlift</option>
+        <option value="OHP">OHP</option>
+        <option value="Clean">Clean</option>
+    </select> <br> <br>
+
+    <label for="Weight">Weight (lbs)</label>
+    <input type="Weight" name="Weight" id="Weight" required> <br> <br> 
+    <label for="Reps">Reps</label>
+    <input name="Reps" id="Reps" required> <br> <br>
+    <label for="RPE">RPE</label>
+    <input type="RPE" name="RPE" id="RPE" required>  <br> <br>
+    <label for="Date">Date</label> 
+    <input type="Date" name="Date" id="Date" required>  <br> <br>
+    <input type="submit" value="Create"> <br> <br>
+  </form>
+  <form action={{ url_for('index') }}>
+    <input type="submit" value="Back">
+  </form>
+
+{% endblock %}

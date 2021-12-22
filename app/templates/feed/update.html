@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Edit {{ workout['lift'] }} from {{ workout['datestamp'] }} {% endblock %}</h1>
+{% endblock %}
+
+
+{% block content %}
+  <form method="post"> <br>
+    <label for="Lift">Lift</label>
+    <select name="Lift" id="Lift" value="{{ request.form['Lift'] or workout['Lift'] }}" required>
+        <option value="Bench">Bench</option>
+        <option value="Squat">Squat</option>
+        <option value="Deadlift">Deadlift</option>
+        <option value="OHP">OHP</option>
+        <option value="Clean">Clean</option>
+    </select> <br> <br>
+
+    <label for="Weight">Weight</label>
+    <input name="Weight" id="Weight" required value="{{ request.form['Weight'] or workout['Weight'] }}"> <br> <br>
+    <label for="Reps">Reps</label>
+    <input name="Reps" id="Reps" required value="{{ request.form['Reps'] or workout['Reps'] }}"> <br> <br>
+    <label for="RPE">RPE</label>
+    <input name="RPE" id="RPE" required value="{{ request.form['RPE'] or workout['RPE'] }}"> <br> <br>
+    <label for="Date">Date</label>
+    <input type="Date" name="Date" id="Date" required value="{{ request.form['Datestamp'] or workout['Datestamp'] }}"> <br> <br>
+    <input type="submit" value="Save">
+    </body>
+  </form>
+  <hr>
+  <form action={{ url_for('index') }}>
+    <input type="submit" value="Back">
+  </form> <br> 
+  <form action="{{ url_for('feed.delete', id=workout['id']) }}" method="post">
+    <input class="danger" type="submit" value="Delete" onclick="return confirm('Are you sure?');">
+  </form>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% for workout in workouts %}
+    <article class="post">
+      <header>
+        <div>
+          <h1>{{ workout['Lift'] }}</h1>
+          <div class="about">by {{ workout['username'] }} on {{ workout['Datestamp'].strftime('%Y-%m-%d') }}</div>
+        </div>
+        {% if g.user['id'] == workout['creator_id'] %}
+          <a class="action" href={{ url_for('feed.update', id=workout['id']) }}>Edit</a>
+        {% endif %}
+      </header> 
+      <p class="body">{{ workout['Weight'] }} lbs For {{ workout['Reps'] }} {% if workout['Reps'] == '1' %} Rep {% else %} Reps {% endif %} At Relative Perceived Exertion {{ workout['RPE'] }}</p>
+    </article>
+      <hr>
+  {% endfor %}
+{% endblock %}
